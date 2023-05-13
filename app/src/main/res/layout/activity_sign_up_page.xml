@@ -21,14 +21,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Email"
-        android:layout_margin="9dp"/>
+        android:layout_margin="9dp"
+        android:inputType="textEmailAddress"/>
 
     <EditText
         android:id="@+id/etUsername2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Username"
-        android:layout_margin="9dp"/>
+        android:layout_margin="9dp"
+        android:inputType="text"/>
 
     <EditText
         android:id="@+id/etPassword2"
@@ -50,13 +52,13 @@
         android:id="@+id/btnSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="Sign Up"
         android:layout_gravity="center"
         android:layout_margin="27dp"/>
 
     <ProgressBar
         android:visibility="gone"
-        android:id="@+id/pbLoadingBar"
+        android:id="@+id/LoadingBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
