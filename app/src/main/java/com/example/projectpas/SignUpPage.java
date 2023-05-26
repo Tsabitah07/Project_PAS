@@ -27,6 +27,7 @@ public class SignUpPage extends AppCompatActivity {
 
     public static final String SHARED_PREFS = "shared_prefs";
     public static final String EMAIL_KEY = "email_key";
+    public static final String USERNAME_KEY = "username_key";
     public static final String PASSWORD_KEY = "password_key";
 
     SharedPreferences sharedpreferences;
@@ -43,6 +44,7 @@ public class SignUpPage extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up_page);
 
         LoadingBar = findViewById(R.id.LoadingBar);
+        LoadingBar.setVisibility(View.GONE);
 
         tvLogin = findViewById(R.id.tvLogin);
         etEmail = findViewById(R.id.etEmail);
@@ -79,8 +81,9 @@ public class SignUpPage extends AppCompatActivity {
                                         // atau silahkan buat dialog
                                         sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
                                         SharedPreferences.Editor editor = sharedpreferences.edit();
-                                        editor.putString(EMAIL_KEY, username);
-                                        editor.putString(PASSWORD_KEY, "");
+                                        editor.putString(EMAIL_KEY, "inas.tsabitah22@gmail.com");
+                                        editor.putString(USERNAME_KEY, "tsabitah");
+                                        editor.putString(PASSWORD_KEY, "password");
 
                                         // to save our data with key and value.
                                         editor.apply();
@@ -98,6 +101,9 @@ public class SignUpPage extends AppCompatActivity {
                             public void onError(ANError error) {
                                 // Handle error
                                 Toast.makeText(SignUpPage.this, "Failed Login", Toast.LENGTH_SHORT).show();
+
+                                LoadingBar.setVisibility(View.GONE);
+                                btnSignUp.setEnabled(true);
                             }
                         });
             }
