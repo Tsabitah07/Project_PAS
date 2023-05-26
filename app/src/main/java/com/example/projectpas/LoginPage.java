@@ -41,6 +41,7 @@ public class LoginPage extends AppCompatActivity {
         setContentView(R.layout.activity_login_page);
 
         pbLoadingBar = findViewById(R.id.pbLoadingBar);
+        pbLoadingBar.setVisibility(View.GONE);
 
         tvSignUp = findViewById(R.id.tvSignUp);
         etUsername = findViewById(R.id.etUsername);
@@ -64,7 +65,7 @@ public class LoginPage extends AppCompatActivity {
                             @Override
                             public void onResponse(JSONObject response) {
                                 // Handle successful response
-                                Log.d("sukses login", "onResponse: "+response.toString());
+//                                Log.d("sukses login", "onResponse: "+response.toString());
                                 try {
                                     boolean status = response.getBoolean("status");
                                     String message = response.getString("message");
@@ -73,8 +74,8 @@ public class LoginPage extends AppCompatActivity {
                                         // atau silahkan buat dialog
                                         sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
                                         SharedPreferences.Editor editor = sharedpreferences.edit();
-                                        editor.putString(EMAIL_KEY, username);
-                                        editor.putString(PASSWORD_KEY, "");
+                                        editor.putString(EMAIL_KEY, "tsabitah");
+                                        editor.putString(PASSWORD_KEY, "password");
 
                                         // to save our data with key and value.
                                         editor.apply();
@@ -85,6 +86,7 @@ public class LoginPage extends AppCompatActivity {
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
+
                                 pbLoadingBar.setVisibility(View.GONE);
                                 btnLogin.setEnabled(true);
                             }
@@ -92,6 +94,9 @@ public class LoginPage extends AppCompatActivity {
                             public void onError(ANError error) {
                                 // Handle error
                                 Toast.makeText(LoginPage.this, "Failed Login", Toast.LENGTH_SHORT).show();
+
+                                pbLoadingBar.setVisibility(View.GONE);
+                                btnLogin.setEnabled(true);
                             }
                         });
             }
