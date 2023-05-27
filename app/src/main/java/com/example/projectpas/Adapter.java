@@ -52,8 +52,17 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     public Adapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View item = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_list, parent, false);
+        MyViewHolder myView = new MyViewHolder(item);
 
-        return new MyViewHolder(item);
+        item.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                listener.onDataLongClicked(listSports.get(myView.getAdapterPosition()));
+                return true;
+            }
+        });
+
+        return myView;
     }
 
     @Override
@@ -73,6 +82,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
     public interface AdapterListener{
         void onSportsSelected(EncapField contact);
+
+        void onDataLongClicked(EncapField listSport);
     }
 
 }
