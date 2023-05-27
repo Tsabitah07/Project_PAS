@@ -1,9 +1,11 @@
 package com.example.projectpas;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -111,5 +113,43 @@ public class MainActivity extends AppCompatActivity implements Adapter.AdapterLi
         Intent detail = new Intent(MainActivity.this, DetailPage.class);
         detail.putExtra("SportsData", myList);
         startActivity(detail);
+    }
+
+    //buat nge konfir di adapter, kalo ni item mw di hapus
+    @Override
+    public void onDataLongClicked(EncapField mySport) {
+        // Tampilkan opsi menu delete di sini
+        showDeleteMenu(mySport);
+    }
+
+    //buat nge apus
+    private void showDeleteMenu(EncapField mySport) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Delete Item");
+        builder.setMessage("Are you sure you want to delete this item?");
+
+        builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // Lakukan operasi penghapusan item di sini
+                deleteItem(mySport);
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void deleteItem(EncapField mySport) {
+        // Lakukan operasi penghapusan item sesuai dengan data yang diberikan
+        listSports.remove(mySport);
+        AdapterList.notifyDataSetChanged();
     }
 }
