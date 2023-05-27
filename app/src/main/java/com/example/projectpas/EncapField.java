@@ -7,14 +7,22 @@ import androidx.annotation.NonNull;
 
 public class EncapField implements Parcelable {
 
-    private String image;
+    private String imageBadge;
     private String Name;
-    private String Data;
+    private String firstEvent;
+    private String LeagueAlternate;
+    private String Sports;
+    private String Country;
+    private String DescEN;
 
     protected EncapField(Parcel in) {
-        image = in.readString();
+        imageBadge = in.readString();
         Name = in.readString();
-        Data = in.readString();
+        firstEvent = in.readString();
+        LeagueAlternate = in.readString();
+        Sports = in.readString();
+        Country = in.readString();
+        DescEN = in.readString();
     }
 
     EncapField(){
@@ -33,12 +41,12 @@ public class EncapField implements Parcelable {
         }
     };
 
-    public String getImage() {
-        return image;
+    public String getImageBadge() {
+        return imageBadge;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImageBadge(String imageBadge) {
+        this.imageBadge = imageBadge;
     }
 
     public String getName() {
@@ -49,12 +57,12 @@ public class EncapField implements Parcelable {
         Name = name;
     }
 
-    public String getData() {
-        return Data;
+    public String getFirstEvent() {
+        return firstEvent;
     }
 
-    public void setData(String data) {
-        Data = data;
+    public void setFirstEvent(String firstEvent) {
+        this.firstEvent = firstEvent;
     }
 
     @Override
@@ -64,8 +72,44 @@ public class EncapField implements Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeString(image);
+        dest.writeString(imageBadge);
         dest.writeString(Name);
-        dest.writeString(Data);
+        dest.writeString(firstEvent);
+        dest.writeString(LeagueAlternate);
+        dest.writeString(Sports);
+        dest.writeString(Country);
+        dest.writeString(DescEN);
+    }
+
+    public String getLeagueAlternate() {
+        return LeagueAlternate;
+    }
+
+    public void setLeagueAlternate(String leagueAlternate) {
+        LeagueAlternate = leagueAlternate;
+    }
+
+    public String getSports() {
+        return Sports;
+    }
+
+    public void setSports(String sports) {
+        Sports = sports;
+    }
+
+    public String getCountry() {
+        return Country;
+    }
+
+    public void setCountry(String country) {
+        Country = country;
+    }
+
+    public String getDescEN() {
+        return DescEN;
+    }
+
+    public void setDescEN(String descEN) {
+        DescEN = descEN;
     }
 }

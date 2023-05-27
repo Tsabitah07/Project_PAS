@@ -1,59 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailPage">
+    tools:context=".DetailPage"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvTitle"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="17dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imageDetail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvTitle"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="21dp"/>
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="19dp"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"
+            android:textSize="27sp"/>
 
-    <TextView
-        android:id="@+id/DataDetail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageDetail"
-        android:layout_margin="17dp" />
+        <ImageView
+            android:id="@+id/imageDetail"
+            android:layout_width="200dp"
+            android:layout_height="230dp"
+            android:layout_below="@+id/tvTitle"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="21dp"/>
 
-    <TextView
-        android:id="@+id/DataDetail2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/DataDetail"
-        android:layout_margin="17dp"/>
+        <TextView
+            android:id="@+id/tvLeagueAlternate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageDetail"
+            android:layout_marginBottom="11dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginEnd="17dp"
+            android:textSize="19sp"/>
 
-    <TextView
-        android:id="@+id/DataDetail3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/DataDetail2"
-        android:layout_margin="17dp"/>
+        <TextView
+            android:id="@+id/tvSports"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvLeagueAlternate"
+            android:layout_marginBottom="11dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginEnd="17dp"
+            android:textSize="19sp"/>
 
-    <TextView
-        android:id="@+id/DataDetail4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/DataDetail3"
-        android:layout_margin="17dp"/>
+        <TextView
+            android:id="@+id/tvCountry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvSports"
+            android:layout_marginBottom="11dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginEnd="17dp"
+            android:textSize="19sp"/>
 
-    <TextView
-        android:id="@+id/DataDetail5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/DataDetail4"
-        android:layout_margin="17dp"/>
+        <TextView
+            android:id="@+id/tvFirstEvent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvCountry"
+            android:layout_marginBottom="13dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginEnd="17dp"
+            android:textSize="19sp"/>
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/textDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvFirstEvent"
+            android:text="Description"
+            android:layout_marginStart="17dp"
+            android:layout_marginBottom="11dp"
+            android:textSize="19sp"/>
+
+        <TextView
+            android:id="@+id/tvDescEN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textDescription"
+            android:layout_margin="17dp"
+            android:textSize="19sp"/>
+
+    </RelativeLayout>
+
+</ScrollView>

@@ -4,14 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -48,11 +47,15 @@ public class MainActivity extends AppCompatActivity implements Adapter.AdapterLi
 
                             for (int i = 0; i < jsonArrayMovie.length(); i++) {
                                 EncapField myList = new EncapField();
-                                JSONObject Data = jsonArrayMovie.getJSONObject(i);
+                                JSONObject DataSports  = jsonArrayMovie.getJSONObject(i);
 
-                                myList.setName(Data.getString("strLeague"));
-                                myList.setData(Data.getString("dateFirstEvent"));
-                                myList.setImage(Data.getString("strBadge"));
+                                myList.setName(DataSports.getString("strLeague"));
+                                myList.setFirstEvent(DataSports.getString("dateFirstEvent"));
+                                myList.setImageBadge(DataSports.getString("strBadge"));
+                                myList.setLeagueAlternate(DataSports.getString("strLeagueAlternate"));
+                                myList.setSports(DataSports.getString("strSport"));
+                                myList.setCountry(DataSports.getString("strCountry"));
+                                myList.setDescEN(DataSports.getString("strDescriptionEN"));
 
                                 listSports.add(myList);
                             }
@@ -77,6 +80,23 @@ public class MainActivity extends AppCompatActivity implements Adapter.AdapterLi
                 });
     }
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.option_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.menu) {
+            // Handle search action
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,9 +107,9 @@ public class MainActivity extends AppCompatActivity implements Adapter.AdapterLi
     }
 
     @Override
-    public void onMovieSelected(EncapField contact) {
-        Intent intent = new Intent(MainActivity.this, DetailPage.class);
-        intent.putExtra("DataSports", listSports);
-        startActivity(intent);
+    public void onSportsSelected(EncapField myList) {
+        Intent detail = new Intent(MainActivity.this, DetailPage.class);
+        detail.putExtra("SportsData", myList);
+        startActivity(detail);
     }
 }

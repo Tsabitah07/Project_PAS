@@ -31,6 +31,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
             tvName = itemView.findViewById(R.id.tvName);
             tvReleaseDate = itemView.findViewById(R.id.tvReleaseDate);
             imageList = itemView.findViewById(R.id.imageList);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onSportsSelected(listSports.get(getAdapterPosition()));
+                }
+            });
         }
     }
 
@@ -54,9 +61,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         final EncapField contact = this.listSports.get(position);
 
         holder.tvName.setText(contact.getName());
-        holder.tvReleaseDate.setText(contact.getData());
+        holder.tvReleaseDate.setText(contact.getFirstEvent());
 
-        Glide.with(holder.itemView.getContext()).load(contact.getImage()).into(holder.imageList);
+        Glide.with(holder.itemView.getContext()).load(contact.getImageBadge()).into(holder.imageList);
     }
 
     @Override
@@ -65,7 +72,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     }
 
     public interface AdapterListener{
-        void onMovieSelected(EncapField contact);
+        void onSportsSelected(EncapField contact);
     }
 
 }
