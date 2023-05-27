@@ -7,6 +7,13 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
+    <androidx.appcompat.widget.ActionMenuView
+        android:id="@+id/menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        app:menu="@menu/option_menu"/>
+
     <ProgressBar
         android:id="@+id/pbLoadBar"
         android:layout_width="wrap_content"
