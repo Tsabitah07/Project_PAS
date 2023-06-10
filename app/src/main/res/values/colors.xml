@@ -12,6 +12,7 @@
     <color name="gray3">#757575</color>
     <color name="gray4">#A7A7A7</color>
     <color name="gray5">#C8C8C8</color>
+    <color name="gray6">#DDDDDD</color>
     <color name="green1">#27E1C1</color>
     <color name="green2">#0EA293</color>
 </resources>

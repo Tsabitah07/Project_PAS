@@ -28,12 +28,13 @@ public class SignUpPage extends AppCompatActivity {
     public static final String SHARED_PREFS = "shared_prefs";
     public static final String EMAIL_KEY = "email_key";
     public static final String USERNAME_KEY = "username_key";
+    public static final String FULLNAME_KEY = "fullname_key";
     public static final String PASSWORD_KEY = "password_key";
 
     SharedPreferences sharedpreferences;
 
     TextView tvLogin;
-    EditText etEmail, etUsername2, etPassword2;
+    EditText etEmail, etUsername2, etPassword2, etFullName;
     ProgressBar LoadingBar;
     Button btnSignUp;
 
@@ -49,6 +50,7 @@ public class SignUpPage extends AppCompatActivity {
         tvLogin = findViewById(R.id.tvLogin);
         etEmail = findViewById(R.id.etEmail);
         etUsername2 = findViewById(R.id.etUsername2);
+        etFullName = findViewById(R.id.etFullName);
         etPassword2 = findViewById(R.id.etPassword2);
 
         btnSignUp = findViewById(R.id.btnSignUp);
@@ -58,12 +60,14 @@ public class SignUpPage extends AppCompatActivity {
             public void onClick(View v) {
                 String email = etEmail.getText().toString();
                 String username = etUsername2.getText().toString();
+                String fullname = etFullName.getText().toString();
                 String password = etPassword2.getText().toString();
                 LoadingBar.setVisibility(View.VISIBLE);
                 btnSignUp.setEnabled(false);
 
                 AndroidNetworking.post("https://mediadwi.com/api/latihan/register-user")
                         .addBodyParameter("username", username)
+                        .addBodyParameter("fullname", fullname)
                         .addBodyParameter("password", password)
                         .addBodyParameter("email", email)
                         .setPriority(Priority.MEDIUM)
@@ -83,6 +87,7 @@ public class SignUpPage extends AppCompatActivity {
                                         SharedPreferences.Editor editor = sharedpreferences.edit();
                                         editor.putString(EMAIL_KEY, "inas.tsabitah22@gmail.com");
                                         editor.putString(USERNAME_KEY, "tsabitah");
+                                        editor.putString(FULLNAME_KEY, "inas tsabitah");
                                         editor.putString(PASSWORD_KEY, "password");
 
                                         // to save our data with key and value.

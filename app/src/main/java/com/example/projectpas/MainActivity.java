@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -18,6 +20,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,11 +48,11 @@ public class MainActivity extends AppCompatActivity implements Adapter.AdapterLi
                         pbLoadBar.setVisibility(View.GONE);
 
                         try {
-                            JSONArray jsonArrayMovie = jsonObject.getJSONArray("countries");
+                            JSONArray jsonArraySports = jsonObject.getJSONArray("countries");
 
-                            for (int i = 0; i < jsonArrayMovie.length(); i++) {
+                            for (int i = 0; i < jsonArraySports.length(); i++) {
                                 EncapField myList = new EncapField();
-                                JSONObject DataSports  = jsonArrayMovie.getJSONObject(i);
+                                JSONObject DataSports  = jsonArraySports.getJSONObject(i);
 
                                 myList.setName(DataSports.getString("strLeague"));
                                 myList.setFirstEvent(DataSports.getString("dateFirstEvent"));
@@ -91,12 +94,28 @@ public class MainActivity extends AppCompatActivity implements Adapter.AdapterLi
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.menu) {
-            // Handle search action
+        if (id == R.id.action_logout) {
+
+            logoutUser();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void logoutUser() {
+        // Clear user session or perform any other necessary logout actions
+
+        // Example: Clearing user session using SharedPreferences
+        SharedPreferences preferences = getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.apply();
+
+        // Navigate to the login screen or perform other required actions
+        Intent loginIntent = new Intent(MainActivity.this, LoginPage.class);
+        startActivity(loginIntent);
+        finish(); // Optional: Close the current activity to prevent going back to it
     }
 
     @Override

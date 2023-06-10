@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SignUpPage"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center">
 
     <TextView
         android:id="@+id/SignUp"
@@ -14,14 +15,17 @@
         android:text="Sign Up"
         android:gravity="center"
         android:textSize="43sp"
-        android:layout_margin="23dp"/>
+        android:layout_margin="23dp"
+        android:textStyle="bold"/>
 
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Email"
-        android:layout_margin="9dp"
+        android:layout_marginBottom="9dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginEnd="19dp"
         android:inputType="textEmailAddress"/>
 
     <EditText
@@ -29,7 +33,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Username"
-        android:layout_margin="9dp"
+        android:layout_marginBottom="9dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginEnd="19dp"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/etFullName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Full Name"
+        android:layout_marginBottom="9dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginEnd="19dp"
         android:inputType="text"/>
 
     <EditText
@@ -37,7 +53,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Password"
-        android:layout_margin="9dp"
+        android:layout_marginBottom="9dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginEnd="19dp"
         android:inputType="textPassword"/>
 
     <TextView
